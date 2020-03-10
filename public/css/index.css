@@ -248,7 +248,8 @@
         width: 130px;
         height: 90px;
     }
+    
     .index_categories{
-        margin-top: 60px !important;
+        display: none !important;
     }
 }
