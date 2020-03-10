@@ -152,6 +152,7 @@ app.use('/admin/trending',Trending);
 
 mongoose.connect(config.database,
 { useNewUrlParser: true,  useUnifiedTopology: true  },
-()=>console.log('mongodb connected successfully'))
+()=>console.log('mongodb connected successfully'));
+
 var port =process.env.PORT || 5000;
 app.listen(port,()=>console.log(`server up on port:${port}`));
