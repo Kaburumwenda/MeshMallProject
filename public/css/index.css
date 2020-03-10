@@ -1,0 +1,254 @@
+.index_move{
+    margin-top: 100px !important;
+}
+#container_one{
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+#show-case{
+    margin-left: 10px;
+    margin-top: 10px;
+    width: 450px;
+    height: 300px;
+}
+#links-1st{
+    margin-left: 10px;
+    margin-top: 10px;
+    width: 150px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    align-items: center;
+    line-height: 35px;
+}
+#links-1st a{
+    color: black;
+    font-size: 15px;
+    font-weight: bolder;
+    text-decoration: none;
+}
+#links-1st a:hover{
+    color: orange;
+}
+
+/*SECOND SECTION // CONTAINER
+*/
+
+#index-sec{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 5px;
+    background-color: white;
+}
+.index-icons2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.index-icons2 a{
+    text-decoration: none;
+    font-weight: bolder;
+}
+.index-icons2 a:hover{
+    color: orange;
+}
+.index2-p{
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color:#004d00;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+
+}
+.index2-p1{
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color:#4d004d;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+
+}
+.index2-p2{
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color:#003333;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+
+}
+.index2-p3{
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color:#003d66;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+
+}
+.index2-icon{
+    color: white;
+    font-size: 20px;
+}
+
+
+/*CONTAINER THREE //
+ FEATURED PRODUCTS 
+*/
+.container_index {    display: flex;    
+    overflow-x: auto;
+}
+.featured-prod{
+    
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    margin-bottom: 0px;
+    
+}
+#spacer{
+    flex: 1;
+}
+#featured_a a{
+    color: #803300;
+    text-decoration: none;
+    font-weight: bolder;
+}
+#featured_a a:hover{
+    color: red;
+}
+.featured_text{
+    color: black;
+    font-weight: bolder;
+}
+
+
+/*CONTAINER FOUR //
+
+ FEATURED CATEGORIES ICONS LINKS 
+*/
+
+#indexcat_icons{
+    display: flex;
+    flex-wrap: wrap;
+    background-color: white;
+}
+#indexcat_icons img{
+    width: 120px;
+    height: 100px;
+    
+}
+.text_4th{
+    color:#666600 ;
+    font-weight: bold;
+    border-bottom: 1px solid #666600;
+}
+.text_4th:hover{
+    color: orange;
+}
+#container_4th{
+    background-color: white;
+    margin-top: 10px;
+}
+.items_4th a{
+    text-decoration: none;
+    font-weight: bold;
+}
+.items_4th a:hover{
+    color: orange;
+}
+
+.card{
+    
+    transition:all 1s linear;
+}
+.card-img-top2{
+    transition:all 1s linear;
+}
+.items_4th:hover .card-img-top2{
+    transform:scale(1.2);
+}
+
+/* FITHY CONTAINER
+// QUCK SEARCH SECTION 
+*/
+#indexsearch{
+    display: flex;
+    flex-wrap: wrap;
+    background-color: white;
+}
+#indexsearch img{
+    width: 150px;
+    height: 120px;
+    
+}
+.items_5th a{
+    text-decoration: none;
+    font-weight: bold;
+}
+.items_5th a:hover{
+    color: orange;
+}
+.card-img-top3{
+    transition:all 1s linear;
+}
+.items_5th:hover .card-img-top3{
+    transform:scale(1.2);
+}
+
+#container_5th{
+    background-color: white;
+    margin-top: 30px;
+}
+.container5th_text{
+    color:palevioletred ;
+    font-weight: bold;
+    border-bottom: 1px solid #666600;
+    font-size: 20px;
+}
+.container5th_text span{
+    color: green;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+
+@media(max-width: 700px){
+    #container_one{
+        flex-direction: column;
+    }
+    #show-case{
+        width: 300px;
+        height: 200px;
+    }
+    #links-1st{
+        display: none;
+    }
+    #indexcat_icons img{
+        width: 130px;
+        height: 90px;
+        
+    }
+    #indexsearch img{
+        width: 130px;
+        height: 90px;
+    }
+    .index_categories{
+        margin-top: 60px !important;
+    }
+}

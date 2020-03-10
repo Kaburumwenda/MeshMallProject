@@ -1,0 +1,301 @@
+<%- include('_layouts/header') -%>
+
+<div id="container_one" class="index_move">
+    <!--CATEGORIES CONTAINER-->
+    <div class="index_categories">
+        
+                    <ul class="list-group">
+                        <li class="list-group-item"><a href="/products/all-products">MeshMall</a></li>
+                        <% categories.forEach(function(c){ %>
+                            <li class="list-group-item"><a href="/products/<%= c.slug %>"><%= c.title %></a></li>
+                        <% }); %>
+                    </ul>
+    </div>
+    <!--Slider ADVERTS-->
+    <div id="show-case">
+        <div class="imgslider1"><a href="#"><img class="img-responsive" src="/assests/ad1.png"/></a></div>
+        
+        <div class="imgslider1"><a href="#"><img class="img-responsive" src="https://i.postimg.cc/PfS3PbyH/3.jpg"/></a></div>
+  
+        <div class="imgslider1"><a href="#"><img class="img-responsive" src="/assests/ad2.jpg"/></a></div>
+  
+        <div class="imgslider1"><a href="#"><img class="img-responsive" src="https://i.postimg.cc/sfHmVjfD/7.jpg"/></a></div>
+  
+        <div class="imgslider1"><a href="#"><img class="img-responsive" src="/assests/ad3.jpg"/></a></div>
+  
+        <div class="imgslider1"><a href="#"><img class="img-responsive" src="https://i.postimg.cc/y8m0SsKR/4.jpg"/></a></div>
+    </div>
+    <!--HOME PAGE LINKS ON MENU-->
+    <div id="links-1st">
+        <div><a href="#"> <i class="fa fa-car" aria-hidden="true"></i> Quick Delivery</a></div>
+        <div><a href="#"> <i class="fa fa-first-order" aria-hidden="true"></i> Quality Products</a></div>
+        <div><a href="#"> <i class="fa fa-exchange" aria-hidden="true"></i> Easy Return</a></div>
+    </div>
+</div>
+
+<!--SECOND CONTAINER-->
+<div id="index-sec">
+    <div class="index-icons2">
+        <p class="index2-p"><a href="#"><i class="fa fa-shopping-bag index2-icon" aria-hidden="true"></i></a></p>
+        <p><a href="#">MeshMall</a></p>
+    </div>
+
+    <div class="index-icons2">
+        <p class="index2-p1"><a href="#"><i class="fa fa-car index2-icon" aria-hidden="true"></i></a></p>
+        <p><a href="#">Free Delivery</a></p>
+    </div>
+
+    <div class="index-icons2">
+        <p class="index2-p2"><a href="#"><i class="fa fa-percent index2-icon" aria-hidden="true"></i>        </a></p>
+        <p><a href="#">Offers</a></p>
+    </div>
+
+    <div class="index-icons2">
+        <p class="index2-p3"><a href="#"><i class="fa fa-building index2-icon" aria-hidden="true"></i> </a></p>
+        <p><a href="#">Mombasa</a></p>
+    </div>
+</div>
+
+
+<!--CONTAINER THREE FEATURED PRODUCTS-->
+
+    
+    <div class="featured-prod">
+        <div class="featured_text">Featured Products</div>
+        <div id="spacer"></div>
+        <div id="featured_a"><a  href="/products/all-products">See all <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a></div>
+    </div>
+    <div class="container_index">
+        <% products.forEach(function(p){ %>
+            
+                <div class="card">
+ 
+ 
+                    <div class="img-container">
+                     <p class="dis"style="font-weight: bold; font-family: 'Oswald';">Discout: Ksh<%= p.discount %></p>
+                    <a class="pa"  href="/products/<%= p.category %>/<%= p.slug %>">
+                         <img class="card-img-top img-responsive"src="/product_images/<%= p.id %>/<%= p.image %>" alt="">
+                     </a>
+                    </div>
+ 
+ 
+                    <div class="card-footer d-flex justify-content-between">
+                     <h6 style="font-weight: bold; font-family: 'Oswald';"><%= p.title %></h6>
+                    </div>
+                    
+ 
+                    <div>
+                         <h4 style="font-family: 'Roboto Slab';">Ksh <%= p.price %></h4>
+                         <h5 style="font-family: 'Roboto Slab';"><strike class="strike">Ksh <%= p.price_off %></Ksh></strike></h5>
+                    </div>
+                </div>
+            
+         <% }); %>
+     
+    </div>
+
+  
+    <!--CONTAINER FOUR 
+        
+        FEATURED CATEGORIES ICONS-->
+
+  <div id="container_4th">
+      <p class="text_4th">Featured Categories</p>
+      <div id="indexcat_icons">
+
+        <div class="items_4th card">
+            <p><a href="#"> <img class="card-img-top2" src="/icons/love.svg"/></a></p>
+            <p><a href="#">Valentine</a></p>
+        </div>
+        
+        <div class="items_4th card">
+            <p><a href="#"> <img class="card-img-top2" src="/icons/grocery.jpg"/></a></p>
+            <p><a href="#">Grocery</a></p>
+        </div>
+
+        <div class="items_4th card">
+            <p><a href="#"> <img class="card-img-top2" src="/icons/baby.svg"/></a></p>
+            <p><a href="#">Baby Products</a></p>
+        </div>
+
+        <div class="items_4th card">
+            <p><a href="#"> <img class="card-img-top2" src="/icons/Makeup.svg"/></a></p>
+            <p><a href="#">Makeups & Beauty</a></p>
+        </div>
+
+        <div class="items_4th card">
+            <p><a href="#"> <img class="card-img-top2" src="/icons/jewely.svg"/></a></p>
+            <p><a href="#">Jewellery</a></p>
+        </div>
+        
+        <div class="items_4th card">
+            <p><a href="#"> <img class="card-img-top2" src="/icons/sport.jpg"/></a></p>
+            <p><a href="#">Sport</a></p>
+        </div>
+
+        <div class="items_4th card">
+            <p><a href="#"> <img class="card-img-top2" src="/icons/women.svg"/></a></p>
+            <p><a href="#">Women Fashion</a></p>
+        </div>
+        
+        <div class="items_4th card">
+            <p><a href="#"> <img class="card-img-top2" src="/icons/muslim1.jpeg"/></a></p>
+            <p><a href="#">Muslim Fashion</a></p>
+        </div>
+
+        <div class="items_4th card">
+            <p><a href="#"> <img class="card-img-top2" src="/icons/men.png"/></a></p>
+            <p><a href="#">Men Fashion</a></p>
+        </div>
+
+        <div class="items_4th card">
+            <p><a href="#"> <img class="card-img-top2" src="/icons/phones.png"/></a></p>
+            <p><a href="#">Phones & Tablets</a></p>
+        </div>
+
+
+        <div class="items_4th card">
+            <p><a href="#"> <img class="card-img-top2" src="/icons/entertainment.svg"/></a></p>
+            <p><a href="#">Entertainment</a></p>
+        </div>
+        
+        <div class="items_4th card">
+            <p><a href="#"> <img class="card-img-top2" src="/icons/baby.jpg"/></a></p>
+            <p><a href="#">Baby Products</a></p>
+        </div>
+
+        <div class="items_4th card">
+            <p><a href="#"> <img class="card-img-top2" src="/icons/electricals.svg"/></a></p>
+            <p><a href="#">Electrical</a></p>
+        </div>
+
+        <div class="items_4th card">
+            <p><a href="#"> <img class="card-img-top2" src="/icons/index.png"/></a></p>
+            <p><a href="#">laptops</a></p>
+        </div>
+
+        <div class="items_4th card">
+            <p><a href="#"> <img class="card-img-top2" src="/icons/Purses.svg"/></a></p>
+            <p><a href="#">Women Purses</a></p>
+        </div>
+
+        <div class="items_4th card">
+            <p><a href="#"> <img class="card-img-top2" src="/icons/Shopping_bags.svg"/></a></p>
+            <p><a href="#">Shopping Bags </a></p>
+        </div>
+
+        <div class="items_4th card">
+            <p><a href="#"> <img class="card-img-top2" src="/icons/wines_spirits.svg"/></a></p>
+            <p><a href="#">Wines & Spirits</a></p>
+        </div>
+
+        <div class="items_4th card">
+            <p><a href="#"> <img class="card-img-top2" src="/icons/pet.svg"/></a></p>
+            <p><a href="#">Pets Products</a></p>
+        </div>
+
+        <div class="items_4th card">
+            <p><a href="#"> <img class="card-img-top2" src="/icons/fishing&Golf.svg"/></a></p>
+            <p><a href="#">Golf & Fishing</a></p>
+        </div>
+
+        <div class="items_4th card">
+            <p><a href="#"> <img class="card-img-top2" src="/icons/birthday.svg"/></a></p>
+            <p><a href="#">Birthday</a></p>
+        </div>
+
+        <div class="items_4th card">
+            <p><a href="#"> <img class="card-img-top2" src="/icons/camera&watchs.svg"/></a></p>
+            <p><a href="#">Camera & watchs</a></p>
+        </div>
+
+        
+        <div class="items_4th card">
+            <p><a href="#"> <img class="card-img-top2" src="/icons/bookshop.png"/></a></p>
+            <p><a href="#">School & Bookshop</a></p>
+        </div>
+
+        <div class="items_4th card">
+            <p><a href="#"> <img class="card-img-top2" src="/icons/furniture.png"/></a></p>
+            <p><a href="#">Furnitures</a></p>
+        </div>
+
+        <div class="items_4th card">
+            <p><a href="#"> <img class="card-img-top2" src="/icons/office.png"/></a></p>
+            <p><a href="#">Office</a></p>
+        </div>
+
+        <div class="items_4th card">
+            <p><a href="#"> <img class="card-img-top2" src="/icons/sanitary.jpg"/></a></p>
+            <p><a href="#">Sanitary</a></p>
+        </div>
+
+        <div class="items_4th card">
+            <p><a href="#"> <img class="card-img-top2" src="/icons/meshmall_advertures.svg"/></a></p>
+            <p><a href="#">MeshMall Advertures</a></p>
+        </div>
+
+        
+      </div>
+  </div>
+
+
+   <!--CONTAINER FITH 
+        
+        FEATURED CATEGORIES ICONS-->
+
+        <div id="container_5th">
+            <p class="container5th_text">Quick Search <span>||</span>Hot Deals <span>||</span> MeshMall</p>
+            <div id="indexsearch">
+                <div class="items_5th card">
+                    <p><a href="#"><img class="card-img-top3" src="/assests/best_price.jpg"></a></p>
+                    <p><a href="#">Best Price</a></p>
+                </div>
+
+                <div class="items_5th card">
+                    <p><a href="#"><img class="card-img-top3" src="/assests/new.jpg"></a></p>
+                    <p><a href="#">New Items</a></p>
+                </div>
+
+                <div class="items_5th card">
+                    <p><a href="#"><img class="card-img-top3" src="/assests/starRating.png"></a></p>
+                    <p><a href="#">Top Rated Products</a></p>
+                </div>
+
+                <div class="items_5th card">
+                    <p><a href="#"><img class="card-img-top3" src="/assests/topselling1.jpg"></a></p>
+                    <p><a href="#">Top Selling Items</a></p>
+                </div>
+
+                <div class="items_5th card">
+                    <p><a href="#"><img class="card-img-top3" src="/assests/global.jpg"></a></p>
+                    <p><a href="#">Global Analysis</a></p>
+                </div>
+
+                <div class="items_5th card">
+                    <p><a href="#"><img class="card-img-top3" src="/assests/meshmallGift.png"></a></p>
+                    <p><a href="#">MeshMall Bonuses</a></p>
+                </div>
+            </div>
+        </div>
+
+    <script>
+         $(document).ready(function()
+        {
+            $('.imgslider1:gt(0)').hide();
+            setInterval(function() {
+                $(".imgslider1:first-child").slideUp(3000).next(".imgslider1").slideDown(3000).end().appendTo("#show-case")
+        }, 3000);
+        
+
+        $('.welcome-text:gt(0)').hide();
+            setInterval(function() {
+                $(".welcome-text:first-child").fadeOut(100).next(".welcome-text").fadeIn(3000).end().appendTo("#welcome")
+        }, 3000);
+        
+        });
+    </script>
+
+<%- include('_layouts/footer') -%>
+
+
