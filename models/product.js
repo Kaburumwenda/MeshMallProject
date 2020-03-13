@@ -35,6 +35,9 @@ var ProductSchema = mongoose.Schema({
     },
     image: {
         type: String
+    },
+    spec:{
+        type:String
     }
     
 });

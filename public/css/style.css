@@ -4,6 +4,26 @@
 body{
     background-color: #f2f2f2;
 }
+#products{
+    margin-top: 100px !important;
+}
+.sold_products{
+    font-size: 15px;
+    font-weight: bolder;
+}
+.sold_products span{
+    color: orange;
+}
+.product_desc{
+    color: black;
+    font-size: 20px;
+    font-family: 'Oswald', sans-serif;
+}
+.product_spec{
+    color: blue;
+    font-size: 25px;
+    font-family: 'Oswald', sans-serif;
+}
 img.pimage {
     width: 130px;
 }

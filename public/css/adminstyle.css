@@ -32,3 +32,42 @@ ul.gallery li {
 table.alignmiddle td {
     vertical-align: middle !important;
 }
+
+/*SECTION TWO DESIGN
+
+//
+*/
+
+#management{
+    margin-top: 20px;
+}
+#management p{
+    text-align: center;
+    font-size: 30px;
+    font-weight: bolder;
+}
+#management_items{
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 20px;
+    margin-left: 10%;
+
+}
+.card{
+    width: 200px !important;
+    height: 40px;
+    background-color: #e6e6;
+    margin-left: 20px;
+    border: 2px solid blueviolet;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.card a{
+    color: white;
+    text-decoration: none;
+    font-weight: bolder;
+}
+.card a:hover{
+    color: orange;
+}

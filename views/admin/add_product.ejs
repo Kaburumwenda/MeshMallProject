@@ -13,7 +13,7 @@
     
     <div class="form-group">
         <label for="">Description</label>
-        <textarea name="desc" class="form-control" cols="30" rows="10" placeholder="Description"><%= desc %></textarea>
+        <textarea  name="desc" class="form-control" cols="30" rows="10" placeholder="Description"><%= desc %></textarea>
     </div>
     
     <div class="form-group">
@@ -40,6 +40,16 @@
         <label for="">Discount</label>
         <input type="text" class="form-control" name="discount" value="<%= discount %>" placeholder="Discount">
     </div>
+
+    <div class="form-group">
+        <label for="">Seller</label>
+        <input type="text" class="form-control" name="seller" value="<%= seller %>" placeholder="Seller">
+    </div>
+
+    <div class="form-group">
+        <label for="">Specifications</label>
+        <textarea  name="spec" class="form-control" cols="30" rows="80" placeholder="Product Specification"><%= spec %></textarea>
+    </div>
     
     <div class="form-group">
         <label for="">Image</label>
@@ -47,7 +57,7 @@
         <img src="#" id="imgPreview" alt="">
     </div>
     
-    <button class="btn btn-default">Submit</button>
+    <button class="btn btn-default btn-success">Submit to server</button>
 </form>
 
 <script>

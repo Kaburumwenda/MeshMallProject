@@ -38,9 +38,10 @@ router.get('/add-product',isAdmin,  function (req, res) {
     var title = "";
     var desc = "";
     var price = "";
-    //var seller = "";
+    var seller = "";
     var discount = "";
     price_off ="";
+    var spec = "";
 
     Category.find(function (err, categories) {
         res.render('admin/add_product', {
@@ -48,8 +49,9 @@ router.get('/add-product',isAdmin,  function (req, res) {
             desc: desc,
             categories: categories,
             price: price,
+            spec:spec,
             price_off:price_off,
-            //seller:seller,
+            seller:seller,
             discount:discount
         });
     });
@@ -66,9 +68,9 @@ router.post('/add-product', function (req, res) {
 
     req.checkBody('title', 'Title must have a value.').notEmpty();
     req.checkBody('desc', 'Description must have a value.').notEmpty();
-    //req.checkBody('seller', 'seller must have a value.').notEmpty();
-    req.checkBody('price', 'Price must have a value.').isDecimal();
-    req.checkBody('price_off', 'Price discount must have a value.').isDecimal();
+    req.checkBody('seller', 'seller must have a value.').notEmpty();
+    req.checkBody('price', 'Price must have a value.').notEmpty();
+    req.checkBody('price_off', 'Price discount must have a value.').notEmpty();
     req.checkBody('image', 'You must upload an image').isImage(imageFile);
 
     var title = req.body.title;
@@ -77,6 +79,7 @@ router.post('/add-product', function (req, res) {
     var price = req.body.price;
     var price_off =req.body.price_off;
     var seller = req.body.seller;
+    var spec =req.body.spec;
     var category = req.body.category;
     var discount = req.body.discount;
 
@@ -91,7 +94,8 @@ router.post('/add-product', function (req, res) {
                 categories: categories,
                 price: price,
                 price_off:price_off,
-                //seller:seller,
+                seller:seller,
+                spec:spec,
                 discount:discount
             });
         });
@@ -106,7 +110,8 @@ router.post('/add-product', function (req, res) {
                         categories: categories,
                         price: price,
                         price_off:price_off,
-                        //seller: seller,
+                        seller: seller,
+                        spec:spec,
                         discount:discount
                     });
                 });
@@ -121,7 +126,8 @@ router.post('/add-product', function (req, res) {
                     desc: desc,
                     price: price,
                     price_off:price_off,
-                    //seller:seller,
+                    seller:seller,
+                    spec:spec,
                     category: category,
                     discount:discount,
                     image: imageFile
@@ -192,7 +198,8 @@ router.get('/edit-product/:id', isAdmin,  function (req, res) {
                         res.render('admin/edit_product', {
                             title: p.title,
                             errors: errors,
-                            //seller:p.seller,
+                            seller:p.seller,
+                            spec:p.spec,
                             discount:p.discount,
                             desc: p.desc,
                             categories: categories,
@@ -221,9 +228,9 @@ router.post('/edit-product/:id', function (req, res) {
 
     req.checkBody('title', 'Title must have a value.').notEmpty();
     req.checkBody('desc', 'Description must have a value.').notEmpty();
-    //req.checkBody('seller', 'at least one seller must have a value.').notEmpty();
-    req.checkBody('price', 'Price must have a value.').isDecimal();
-    req.checkBody('price_off', 'Price_off must have a value.').isDecimal();
+    req.checkBody('seller', 'at least one seller must have a value.').notEmpty();
+    req.checkBody('price', 'Price must have a value.').notEmpty();
+    req.checkBody('price_off', 'Price_off must have a value.').notEmpty();
     req.checkBody('image', 'You must upload an image').isImage(imageFile);
 
     var title = req.body.title;
@@ -233,7 +240,8 @@ router.post('/edit-product/:id', function (req, res) {
     var price_off = req.body.price_off;
     var category = req.body.category;
     var pimage = req.body.pimage;
-    //var seller = req.body.seller;
+    var seller = req.body.seller;
+    var spec = req.body.spec;
     var discount = req.body.discount;
     var id = req.params.id;
 
@@ -259,7 +267,8 @@ router.post('/edit-product/:id', function (req, res) {
                     p.title = title;
                     p.slug = slug;
                     p.desc = desc;
-                    //p.seller =seller;
+                    p.seller =seller;
+                    p.spec =spec;
                     p.discount =discount;
                     p.price = price;
                     p.price_off =price_off;

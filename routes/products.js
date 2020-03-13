@@ -21,7 +21,7 @@ router.get('/all-products', function(req, res) {
      if (err)
          console.log(err); 
      res.render('all_products', {
-            title: 'All products',
+            title: 'MeshMall',
             products: products
         });
   });

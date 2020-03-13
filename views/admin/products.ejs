@@ -15,6 +15,7 @@
             <th>Price_off</th>
             <th>Discount</th>
             <th>Category</th>
+            <th>Seller</th>
             <th>Product Image</th>
             <th>Edit</th>
             <th>Delete</th>
@@ -28,6 +29,7 @@
             <td>Ksh <%= product.price_off %></td>
             <td>Ksh <%= product.discount %></td>
             <td><%= product.category %></td>
+            <td><%= product.seller %></td>
             <td>
                 <% if (product.image == "") { %>
                 <img id="noimage" src="/images/noimage.png">

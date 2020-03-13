@@ -10,6 +10,7 @@ var fileUpload = require('express-fileupload');
 var passport = require('passport');
 const config = require('./config/database');
 const cool = require('cool-ascii-faces')
+const MongoStore = require('connect-mongo')(session);
 
 
 app.use(express.json());
@@ -26,20 +27,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 // set global errors variable
 app.locals.errors = null;
 
-// Get Page Model
-//var Page = require('./models/page');
-var Trending = require('./models/trending');
 
-
-
- //Get all pages to pass to header.ejs
-//Page.find({}).sort({sorting: 1}).exec(function (err, pages) {
-//    if (err) {
-//        console.log(err);
-//   } else {
-//        app.locals.pages = pages;
-//    }
-//});
 
 // Get Category Model
 var Category = require('./models/category');
@@ -53,11 +41,6 @@ Category.find(function (err, categories) {
     }
 });
 
-///Get all Trendings models
-
-
-//get all trending
-
 
 //Express fileUpload middleware
 app.use(fileUpload());
@@ -68,11 +51,25 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 
 // Express Session middleware
+/*
 app.use(session({
     secret: 'keyboard cat',
     resave: true,
     saveUninitialized: true
 //  cookie: { secure: true }
+}));
+*/
+app.use(session({
+    store: new MongoStore({
+        url: config.database,
+        ttl: 30 * 24 * 60 * 60
+        
+        
+    }),
+    secret: 'keyboard cat',
+    resave: true,
+    saveUninitialized: true
+
 }));
 
 // Express Validator middleware
@@ -126,6 +123,7 @@ app.use(passport.session());
 app.get('*', function(req,res,next) {
    res.locals.cart = req.session.cart;
    res.locals.user = req.user || null;
+   
    next();
 });
 
@@ -139,6 +137,11 @@ var cart = require('./routes/cart.js');
 var users = require('./routes/users.js');
 var Trending = require('./routes/admin_trending.js');
 //var Trendingadverts = require('./routes/trending.js');
+const adminValentine =require('./routes/admin_valentine');
+const Valentine = require('./routes/valentine');
+const adminGrocery = require('./routes/adnin_grocery');
+const Grocery = require('./routes/grocery');
+
 
 app.use('/',pages);
 //app.use('/admin/pages',adminPages);
@@ -149,10 +152,14 @@ app.use('/cart',cart);
 app.use('/users',users);
 app.use('/admin/trending',Trending);
 //app.use('/adverts',Trendingadverts);
+app.use('/admin/valentine',adminValentine);
+app.use('/valentine',Valentine);
+app.use('/admin/grocery',adminGrocery);
+app.use('/grocery',Grocery);
 
 mongoose.connect(config.database,
 { useNewUrlParser: true,  useUnifiedTopology: true  },
 ()=>console.log('mongodb connected successfully'));
 
-var port =process.env.PORT || 5000;
+var port =process.env.PORT || 3000;
 app.listen(port,()=>console.log(`server up on port:${port}`));

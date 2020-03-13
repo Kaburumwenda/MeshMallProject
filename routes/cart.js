@@ -4,6 +4,11 @@ var router = express.Router();
 // Get Product model
 var Product = require('../models/product');
 
+//Get Grocery Model
+
+var Grocery = require('../models/grocery');
+
+
 /*
  * GET add product to cart
  */
@@ -20,7 +25,8 @@ router.get('/add/:product', function (req, res) {
             req.session.cart.push({
                 title: slug,
                 qty: 1,
-                price: parseFloat(p.price).toFixed(2),
+                //price: parseFloat(p.price).toFixed(2),
+                price:p.price,
                 image: '/product_images/' + p._id + '/' + p.image
             });
         } else {
@@ -39,14 +45,65 @@ router.get('/add/:product', function (req, res) {
                 cart.push({
                     title: slug,
                     qty: 1,
-                    price: parseFloat(p.price).toFixed(2),
+                    price:p.price,
+                    //price: parseFloat(p.price).toFixed(2),
                     image: '/product_images/' + p._id + '/' + p.image
                 });
             }
         }
 
 //        console.log(req.session.cart);
-        req.flash('success', 'Product added to Cart');
+        req.flash('success', 'Product added to Cart successfully');
+        res.redirect('back');
+    });
+
+});
+
+/*
+ * GET add Grocery   product to cart
+ */
+router.get('/grocery/add/:product', function (req, res) {
+
+    var slug = req.params.product;
+
+    Grocery.findOne({slug: slug}, function (err, p) {
+        if (err)
+            console.log(err);
+
+        if (typeof req.session.cart == "undefined") {
+            req.session.cart = [];
+            req.session.cart.push({
+                title: slug,
+                qty: 1,
+                //price: parseFloat(p.price).toFixed(2),
+                price:p.price,
+                image: '/product_images/' + p._id + '/' + p.image
+            });
+        } else {
+            var cart = req.session.cart;
+            var newItem = true;
+
+            for (var i = 0; i < cart.length; i++) {
+                if (cart[i].title == slug) {
+                    cart[i].qty++;
+                    newItem = false;
+                    break;
+                }
+            }
+
+            if (newItem) {
+                cart.push({
+                    title: slug,
+                    qty: 1,
+                    price:p.price,
+                    //price: parseFloat(p.price).toFixed(2),
+                    image: '/product_images/' + p._id + '/' + p.image
+                });
+            }
+        }
+
+//        console.log(req.session.cart);
+        req.flash('success', 'Product added to Cart successfully');
         res.redirect('back');
     });
 
@@ -114,7 +171,7 @@ router.get('/clear', function (req, res) {
 
     delete req.session.cart;
     
-    req.flash('success', 'Cart cleared!');
+    req.flash('success', 'Cart cleared successfully');
     res.redirect('/cart/checkout');
 
 });
