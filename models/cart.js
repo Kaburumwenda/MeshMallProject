@@ -7,15 +7,15 @@ var ProductSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    slug: {
-        type: String
-    },
     
     price: {
         type: Number,
         required: true
     },
-    
+    qty:{
+        type:String,
+        required:true
+    },
     image: {
         type: String
     },

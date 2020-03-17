@@ -22,13 +22,16 @@ router.get('/register', function (req, res) {
  */
 router.post('/register', function (req, res) {
 
-    var name = req.body.name;
+    var firstname = req.body.firstname;
+    var lastname = req.body.lastname;
     var email = req.body.email;
     var username = req.body.username;
+    var phone = req.body.phone;
     var password = req.body.password;
     var password2 = req.body.password2;
 
-    req.checkBody('name', 'Name is required!').notEmpty();
+    req.checkBody('firstname', 'firstname is required!').notEmpty();
+    req.checkBody('lastname', 'lastname is required!').notEmpty();
     req.checkBody('email', 'Email is required!').isEmail();
     req.checkBody('username', 'Username is required!').notEmpty();
     req.checkBody('password', 'Password is required!').notEmpty();
@@ -52,11 +55,15 @@ router.post('/register', function (req, res) {
                 res.redirect('/users/register');
             } else {
                 var user = new User({
-                    name: name,
+                    firstname:firstname,
+                    lastname:lastname,
                     email: email,
                     username: username,
+                    phone:phone,
                     password: password,
-                    admin: 0
+                    admin: 0,
+                    employee:0,
+                    customer:0
                 });
 
                 bcrypt.genSalt(10, function (err, salt) {

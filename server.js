@@ -141,6 +141,9 @@ const adminValentine =require('./routes/admin_valentine');
 const Valentine = require('./routes/valentine');
 const adminGrocery = require('./routes/adnin_grocery');
 const Grocery = require('./routes/grocery');
+const Payment = require('./routes/payment');
+const Search = require('./routes/search');
+const adminAccounts = require('./routes/admin_accounts');
 
 
 app.use('/',pages);
@@ -156,6 +159,9 @@ app.use('/admin/valentine',adminValentine);
 app.use('/valentine',Valentine);
 app.use('/admin/grocery',adminGrocery);
 app.use('/grocery',Grocery);
+app.use('/admin/payment',Payment);
+app.use('/search',Search);
+app.use('/admin/accounts',adminAccounts);
 
 mongoose.connect(config.database,
 { useNewUrlParser: true,  useUnifiedTopology: true  },

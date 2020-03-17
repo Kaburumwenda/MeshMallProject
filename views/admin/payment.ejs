@@ -1,0 +1,39 @@
+<%- include('../_layouts/adminheader') %>
+
+<h2 class="page-title">Payment</h2>
+<br>
+
+
+<table class="table table-striped alignmiddle">
+
+    <thead>
+        <tr class="home">
+            <th>Customer</th>
+            <th>Products</th>
+            <th>Price</th>
+            <th>quantity</th>
+            <th>Product Image</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% cart.forEach(function(product){ %>
+        <tr>
+            <td><%= product.user %></td>
+            <td>Ksh <%= product.title %></td>
+            <td>Ksh <%= product.price %></td>
+            <td>Ksh <%= product.qty %></td>
+            
+            <td>
+                <% if (product.image == "") { %>
+                <img id="noimage" src="/images/noimage.png">
+                <% } else {%>
+                <img id="noimage" src="/product_images/<%= product._id %>/<%= product.image %>">
+                <% }%>
+            </td>
+        </tr>
+        <% }); %>
+    </tbody>
+</table>
+
+
+<%- include('../_layouts/adminfooter') %>

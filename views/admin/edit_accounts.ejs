@@ -1,0 +1,63 @@
+<%- include('../_layouts/adminheader') %>
+
+
+<h2 class="page-title">Edit Account Details</h2>
+<a href="/admin/accounts" class="btn btn-primary">Back to all Accounts</a>
+<br><br>
+
+<form method="post" action="/admin/accounts/edit-account/<%= id %>" enctype="multipart/form-data">
+    
+    <div class="form-group">
+        <label for="">Firstname</label>
+        <input type="text" class="form-control" name="firstname" value="<%= firstname %>" placeholder="Firstname">
+    </div>
+    
+    <div class="form-group">
+        <label for="">Lastname</label>
+        <input type="text" class="form-control" name="lastname" value="<%= lastname %>" placeholder="lastname">
+    </div>
+    
+    
+    
+    <div class="form-group">
+        <label for="">username</label>
+        <input type="text" class="form-control" name="username" value="<%= username %>" placeholder="username">
+    </div>
+
+    <div class="form-group">
+        <label for="">Email</label>
+        <input type="text" class="form-control" name="email" value="<%= email %>" placeholder="email">
+    </div>
+
+    <div class="form-group">
+        <label for="">Phone Number</label>
+        <input type="text" class="form-control" name="phone" value="<%= phone %>" placeholder="Phone number">
+    </div>
+
+    <div class="form-group">
+        <label for="">Admin</label>
+        <input type="text" class="form-control" name="admin" value="<%= admin %>" placeholder="admin privileges">
+    </div>
+
+    <div class="form-group">
+        <label for="">MeshMall Employee</label>
+        <input type="text" class="form-control" name="employee" value="<%= employee %>" placeholder="MeshMall Employee">
+    </div>
+
+    <div class="form-group">
+        <label for="">MeshMall Customer</label>
+        <input type="text" class="form-control" name="customer" value="<%= customer %>" placeholder="MeshMall Customer">
+    </div>
+    
+    
+    <button class="btn btn-default btn-success">Submit to server</button>
+</form>
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.1.1/basic.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.1.1/dropzone.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.1.1/dropzone.js"></script>
+
+
+<%- include('../_layouts/adminfooter') %>
