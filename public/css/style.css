@@ -3,6 +3,7 @@
 }
 body{
     background-color: #f2f2f2;
+  
 }
 #products{
     margin-top: 100px !important;
@@ -115,19 +116,6 @@ table.alignmiddle td {
     background-color: #ffffff;
     
     
-}
-
-/*search in header section */
-.Details-button{
-    color:olive;
-    border: 1px solid gray;
-    border-radius: 5px;
-    font-family: 'Oswald';
-    font-weight: bold;
-    background-color:white;
-}
-.Details-button:hover{
-    color: orange;
 }
 
 

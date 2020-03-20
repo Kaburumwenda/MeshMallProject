@@ -18,6 +18,7 @@
     
     <% var total = 0; %>
     <% cart.forEach(function(product){ %>
+    <!--<% var sub = parseFloat(product.qty * product.price).toFixed(2) %>-->
     <% var sub = parseFloat(product.qty * product.price).toFixed(2) %>
     <% total += +sub %>
     <tr>
@@ -34,8 +35,8 @@
     </tr>
     <% }); %>
     <tr>
-        
-        <td colspan="6" align="right"><b>Total: </b> Ksh <%= parseFloat(total).toFixed(2) %></td>
+        <!--<%= parseFloat(total).toFixed(2) %>-->
+        <td colspan="6" align="right"><b>Total: </b> Ksh <%= parseFloat(total).toFixed(2)  %></td>
     </tr>
     <tr>
         <td colspan="5" align="right">

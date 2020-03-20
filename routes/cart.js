@@ -8,6 +8,9 @@ var Product = require('../models/product');
 
 var Grocery = require('../models/grocery');
 
+//Get Baby Product Model
+
+const Babyproduct = require('../models/baby');
 
 /*
  * GET add product to cart
@@ -59,8 +62,11 @@ router.get('/add/:product', function (req, res) {
 
 });
 
+
 /*
- * GET add Grocery   product to cart
+ * GET add Grocery   
+ 
+ product to cart
  */
 router.get('/grocery/add/:product', function (req, res) {
 
@@ -108,6 +114,61 @@ router.get('/grocery/add/:product', function (req, res) {
     });
 
 });
+
+
+/*GET ADD BABY
+//PRODUCT
+// TO CART
+*/
+
+router.get('/babyproducts/add/:product', function (req, res) {
+
+    var slug = req.params.product;
+
+    Babyproduct.findOne({slug: slug}, function (err, pi) {
+        if (err)
+            console.log(err);
+
+        if (typeof req.session.cart == "undefined") {
+            req.session.cart = [];
+            req.session.cart.push({
+                title: slug,
+                qty: 1,
+                //price: parseFloat(p.price).toFixed(2),
+                price:p.price,
+                image: '/product_images/' + pi._id + '/' + pi.image
+            });
+        } else {
+            var cart = req.session.cart;
+            var newItem = true;
+
+            for (var i = 0; i < cart.length; i++) {
+                if (cart[i].title == slug) {
+                    cart[i].qty++;
+                    newItem = false;
+                    break;
+                }
+            }
+
+            if (newItem) {
+                cart.push({
+                    title: slug,
+                    qty: 1,
+                    
+                    price:pi.price,
+                    //price: parseFloat(p.price).toFixed(2),
+                    image: '/product_images/' + pi._id + '/' + pi.image
+                });
+            }
+        }
+
+//        console.log(req.session.cart);
+        req.flash('success', 'Product added to Cart successfully');
+        res.redirect('back');
+    });
+
+});
+
 
 /*
  * GET checkout page

@@ -7,7 +7,7 @@ var auth = require('../config/auth');
 var isAdmin = auth.isAdmin;
 
 // Get Product model
-var Product = require('../models/product');
+var Product = require('../models/baby');
 
 // Get Category model
 var Category = require('../models/category');
@@ -23,7 +23,7 @@ router.get('/', isAdmin,  function (req, res) {
     });
 
     Product.find(function (err, products) {
-        res.render('admin/products', {
+        res.render('adminFeaturedCat/babies', {
             products: products,
             count: count
         });
@@ -33,7 +33,7 @@ router.get('/', isAdmin,  function (req, res) {
 /*
  * GET add product
  */
-router.get('/add-product',isAdmin,  function (req, res) {
+router.get('/add-babyproduct',isAdmin,  function (req, res) {
 
     var title = "";
     var desc = "";
@@ -44,7 +44,7 @@ router.get('/add-product',isAdmin,  function (req, res) {
     var spec = "";
 
     Category.find(function (err, categories) {
-        res.render('admin/add_product', {
+        res.render('adminFeaturedCat/add_babyproduct', {
             title: title,
             desc: desc,
             categories: categories,
@@ -62,7 +62,7 @@ router.get('/add-product',isAdmin,  function (req, res) {
 /*
  * POST add product
  */
-router.post('/add-product', function (req, res) {
+router.post('/add-babyproduct', function (req, res) {
 
     var imageFile = typeof req.files.image !== "undefined" ? req.files.image.name : "";
 
@@ -87,7 +87,7 @@ router.post('/add-product', function (req, res) {
 
     if (errors) {
         Category.find(function (err, categories) {
-            res.render('admin/add_product', {
+            res.render('adminFeaturedCat/add_babyproduct', {
                 errors: errors,
                 title: title, 
                 desc: desc,
@@ -102,9 +102,9 @@ router.post('/add-product', function (req, res) {
     } else {
         Product.findOne({slug: slug}, function (err, product) {
             if (product) {
-                req.flash('danger', 'Product title exists, choose another.');
+                req.flash('danger', ' Baby Product title exists, choose another.');
                 Category.find(function (err, categories) {
-                    res.render('admin/add_product', {
+                    res.render('adminFeaturedCat/add_babyproduct', {
                         title: title,
                         desc: desc,
                         categories: categories,
@@ -117,14 +117,14 @@ router.post('/add-product', function (req, res) {
                 });
             } else {
 
-                var price2 = parseFloat(price).toFixed(2);
+                //var price2 = parseFloat(price).toFixed(2);
                 //var price_off2 = parseFloat(price).toFixed(2);
 
                 var product = new Product({
                     title: title,
                     slug: slug,
                     desc: desc,
-                    price: price2,
+                    price: price,
                     price_off:price_off,
                     seller:seller,
                     spec:spec,
@@ -158,8 +158,8 @@ router.post('/add-product', function (req, res) {
                         });
                     }
 
-                    req.flash('success', 'Product added successfully');
-                    res.redirect('/admin/products');
+                    req.flash('success', 'Baby Product added successfully');
+                    res.redirect('/admin/babyproduct');
                 });
             }
         });
@@ -170,7 +170,7 @@ router.post('/add-product', function (req, res) {
 /*
  * GET edit product
  */
-router.get('/edit-product/:id', isAdmin,  function (req, res) {
+router.get('/edit-babyproduct/:id', isAdmin,  function (req, res) {
 
     var errors;
 
@@ -183,7 +183,7 @@ router.get('/edit-product/:id', isAdmin,  function (req, res) {
         Product.findById(req.params.id, function (err, p) {
             if (err) {
                 console.log(err);
-                res.redirect('/admin/products');
+                res.redirect('/admin/babyProduct');
             } else {
                 var galleryDir = 'public/product_images/' + p._id + '/gallery';
                 var galleryImages = null;
@@ -193,9 +193,7 @@ router.get('/edit-product/:id', isAdmin,  function (req, res) {
                         console.log(err);
                     } else {
                         galleryImages = files;
-                        price: parseFloat(p.price).toFixed(2),
-                        //price_off:parseFloat(p.price_off).toFixed(2),
-                        res.render('admin/edit_product', {
+                        res.render('adminFeaturedCat/edit_babyproduct', {
                             title: p.title,
                             errors: errors,
                             seller:p.seller,
@@ -222,7 +220,7 @@ router.get('/edit-product/:id', isAdmin,  function (req, res) {
 /*
  * POST edit product
  */
-router.post('/edit-product/:id', function (req, res) {
+router.post('/edit-babyproduct/:id', function (req, res) {
 
     var imageFile = typeof req.files.image !== "undefined" ? req.files.image.name : "";
 
@@ -249,21 +247,20 @@ router.post('/edit-product/:id', function (req, res) {
 
     if (errors) {
         req.session.errors = errors;
-        res.redirect('/admin/products/edit-product/' + id);
+        res.redirect('/admin/babyproduct/edit-babyproduct/' + id);
     } else {
         Product.findOne({slug: slug, _id: {'$ne': id}}, function (err, p) {
             if (err)
                 console.log(err);
 
             if (p) {
-                req.flash('danger', 'Product title exists, choose another.');
-                res.redirect('/admin/products/edit-product/' + id);
+                req.flash('danger', 'Baby Product title exists, choose another.');
+                res.redirect('/admin/babyproduct/edit-babyproduct/' + id);
             } else {
                 Product.findById(id, function (err, p) {
                     if (err)
                         console.log(err);
-                        p.price = parseFloat(price).toFixed(2);
-                        //p.price_off = parseFloat(price_off).toFixed(2);
+                        
                     p.title = title;
                     p.slug = slug;
                     p.desc = desc;
@@ -298,8 +295,8 @@ router.post('/edit-product/:id', function (req, res) {
 
                         }
 
-                        req.flash('success', 'Product edited!');
-                        res.redirect('/admin/products/edit-product/' + id);
+                        req.flash('success', 'Baby Product edited successfully');
+                        res.redirect('/admin/babyproduct/edit-babyproduct/' + id);
                     });
 
                 });
@@ -349,7 +346,7 @@ router.get('/delete-image/:image',isAdmin,  function (req, res) {
                     console.log(err);
                 } else {
                     req.flash('success', 'Image deleted successfully');
-                    res.redirect('/admin/products/edit-product/' + req.query.id);
+                    res.redirect('/admin/babyproduct/edit-babyproduct/' + req.query.id);
                 }
             });
         }
@@ -359,7 +356,7 @@ router.get('/delete-image/:image',isAdmin,  function (req, res) {
 /*
  * GET delete product
  */
-router.get('/delete-product/:id', isAdmin, function (req, res) {
+router.get('/delete-babyproduct/:id', isAdmin, function (req, res) {
 
     var id = req.params.id;
     var path = 'public/product_images/' + id;
@@ -372,8 +369,8 @@ router.get('/delete-product/:id', isAdmin, function (req, res) {
                 console.log(err);
             });
             
-            req.flash('success', 'Product deleted!');
-            res.redirect('/admin/products');
+            req.flash('success', 'Baby Product deleted successfully');
+            res.redirect('/admin/babyproduct');
         }
     });
 
