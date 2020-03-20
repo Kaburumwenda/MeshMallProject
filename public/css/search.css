@@ -240,7 +240,9 @@ MOBILE
     background-color: #008080;
     color: #ffff99;
   }
-  
+  .searchTerm::placeholder{
+      color: #dfcb1b;
+  }
   .searchTerm:focus{
     color: #00cc4e;
   }

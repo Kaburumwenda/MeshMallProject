@@ -146,6 +146,8 @@ const Search = require('./routes/search');
 const adminAccounts = require('./routes/admin_accounts');
 const adminBabies = require('./routes/admin_baby');
 const Babyproduct =require('./routes/babyproducts')
+const adminBeauty = require('./routes/admin_beauty');
+const Beauty = require('./routes/beauty');
 
 
 app.use('/',pages);
@@ -166,10 +168,12 @@ app.use('/search',Search);
 app.use('/admin/accounts',adminAccounts);
 app.use('/admin/babyproduct',adminBabies);
 app.use('/babyproduct',Babyproduct);
+app.use('/admin/beauty',adminBeauty);
+app.use('/beauty',Beauty);
 
 mongoose.connect(config.database,
 { useNewUrlParser: true,  useUnifiedTopology: true  },
 ()=>console.log('mongodb connected successfully'));
 
-var port =process.env.PORT || 3000;
+var port =process.env.PORT || 5000;
 app.listen(port,()=>console.log(`server up on port:${port}`));

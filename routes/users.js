@@ -77,7 +77,7 @@ router.post('/register', function (req, res) {
                             if (err) {
                                 console.log(err);
                             } else {
-                                req.flash('success', 'You are now registered!');
+                                req.flash('success', 'You are now registered to MeshMall');
                                 res.redirect('/users/login')
                             }
                         });

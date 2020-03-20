@@ -5,6 +5,9 @@ body{
     background-color: #f2f2f2;
   
 }
+#checkout_page{
+    margin-top: 100px;
+}
 #products{
     margin-top: 100px !important;
 }
