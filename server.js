@@ -148,6 +148,13 @@ const adminBabies = require('./routes/admin_baby');
 const Babyproduct =require('./routes/babyproducts')
 const adminBeauty = require('./routes/admin_beauty');
 const Beauty = require('./routes/beauty');
+const adminJewelleries = require('./routes/admin_jewelleries');
+const Jewellery = require('./routes/jewelleries');
+const adminSport = require('./routes/admin_sports');
+const Sports =require('./routes/sports');
+const adminWomen =require('./routes/admin_women');
+const Women = require('./routes/women');
+
 
 
 app.use('/',pages);
@@ -170,6 +177,13 @@ app.use('/admin/babyproduct',adminBabies);
 app.use('/babyproduct',Babyproduct);
 app.use('/admin/beauty',adminBeauty);
 app.use('/beauty',Beauty);
+app.use('/admin/jewelleries',adminJewelleries);
+app.use('/jewelleries',Jewellery);
+app.use('/admin/sports',adminSport);
+app.use('/sports',Sports);
+app.use('/admin/women',adminWomen);
+app.use('/women',Women);
+
 
 mongoose.connect(config.database,
 { useNewUrlParser: true,  useUnifiedTopology: true  },

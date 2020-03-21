@@ -20,6 +20,18 @@ const Valentine = require('../models/valentine');
 
 const Beauty = require('../models/beauty');
 
+//GET JEWELLERY PRODUCTS
+
+const Jewellery = require('../models/jewelleries');
+
+//GET SPORT PRODUCTS
+//324 
+const Sport = require('../models/sport');
+
+//GET WOMEN AND FASHION PRODUCTS.
+//369
+const Women = require('../models/women');
+
 /*
  * GET add product to cart
  */
@@ -230,6 +242,141 @@ var slug = req.params.product;
 router.get('/beauty/add/:product', function (req, res) {
     var slug = req.params.product;
             Beauty.findOne({slug: slug}, function (err, p) {
+            if (err)
+                console.log(err);
+            if (typeof req.session.cart == "undefined") {
+                req.session.cart = [];
+                req.session.cart.push({
+                    title: slug,
+                    qty: 1,
+                    price:p.price,
+                    image: '/product_images/' + p._id + '/' + p.image
+                });
+            } else {
+                var cart = req.session.cart;
+                var newItem = true;
+    
+                for (var i = 0; i < cart.length; i++) {
+                    if (cart[i].title == slug) {
+                        cart[i].qty++;
+                        newItem = false;
+                        break;
+                    }
+                }
+    
+                if (newItem) {
+                    cart.push({
+                        title: slug,
+                        qty: 1,
+                        price:p.price,
+                        image: '/product_images/' + p._id + '/' + p.image
+                    });
+                }
+            }
+            req.flash('success', 'Product added to Cart successfully');
+            res.redirect('back');
+        });
+    
+    });
+
+    /*
+ * GET add JEWELLERY
+ 
+ product to cart
+ */
+router.get('/jewellery/add/:product', function (req, res) {
+    var slug = req.params.product;
+            Jewellery.findOne({slug: slug}, function (err, p) {
+            if (err)
+                console.log(err);
+            if (typeof req.session.cart == "undefined") {
+                req.session.cart = [];
+                req.session.cart.push({
+                    title: slug,
+                    qty: 1,
+                    price:p.price,
+                    image: '/product_images/' + p._id + '/' + p.image
+                });
+            } else {
+                var cart = req.session.cart;
+                var newItem = true;
+    
+                for (var i = 0; i < cart.length; i++) {
+                    if (cart[i].title == slug) {
+                        cart[i].qty++;
+                        newItem = false;
+                        break;
+                    }
+                }
+    
+                if (newItem) {
+                    cart.push({
+                        title: slug,
+                        qty: 1,
+                        price:p.price,
+                        image: '/product_images/' + p._id + '/' + p.image
+                    });
+                }
+            }
+            req.flash('success', 'Product added to Cart successfully');
+            res.redirect('back');
+        });
+    
+    });
+
+    /*
+ * GET add SPORT 
+ 
+ product to cart
+ */
+router.get('/sport/add/:product', function (req, res) {
+    var slug = req.params.product;
+            Sport.findOne({slug: slug}, function (err, p) {
+            if (err)
+                console.log(err);
+            if (typeof req.session.cart == "undefined") {
+                req.session.cart = [];
+                req.session.cart.push({
+                    title: slug,
+                    qty: 1,
+                    price:p.price,
+                    image: '/product_images/' + p._id + '/' + p.image
+                });
+            } else {
+                var cart = req.session.cart;
+                var newItem = true;
+    
+                for (var i = 0; i < cart.length; i++) {
+                    if (cart[i].title == slug) {
+                        cart[i].qty++;
+                        newItem = false;
+                        break;
+                    }
+                }
+    
+                if (newItem) {
+                    cart.push({
+                        title: slug,
+                        qty: 1,
+                        price:p.price,
+                        image: '/product_images/' + p._id + '/' + p.image
+                    });
+                }
+            }
+            req.flash('success', 'Product added to Cart successfully');
+            res.redirect('back');
+        });
+    
+    });
+
+    /*
+ * GET add  WOMEN AND FASHION 
+ 
+ product to cart
+ */
+router.get('/women/add/:product', function (req, res) {
+    var slug = req.params.product;
+            Women.findOne({slug: slug}, function (err, p) {
             if (err)
                 console.log(err);
             if (typeof req.session.cart == "undefined") {
