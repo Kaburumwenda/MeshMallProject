@@ -43,4 +43,4 @@ var WineSchema = mongoose.Schema({
     
 });
 
-var Wines = module.exports = mongoose.model('Beer_spirit_Wines', WineSchema);
+var Wines = module.exports = mongoose.model('Beer_spirit_wines', WineSchema);

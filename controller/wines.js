@@ -21,7 +21,7 @@ router.get('/', function(req, res) {
      if (err)
          console.log(err); 
      res.render('all_wine', {
-            title: 'Beer, Wines & Spirit',
+            title: 'Wine',
             products: products
         });
   });
@@ -64,5 +64,7 @@ router.get('/:category/:product', function (req, res) {
 
 // Exports
 module.exports = router;
+
+
 
 
