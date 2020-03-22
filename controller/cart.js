@@ -64,6 +64,18 @@ const Laptop = require('../models/laptop');
 //767
 const Wine = require('../models/wines');
 
+//GET SHOPPING BAGS
+//816
+const Shoppingbags = require('../models/shoppingbags');
+
+//GET PETS ITEMS
+//867
+const Pets = require('../models/pets');
+
+//GET PETS ITEMS
+//910
+const Golf = require('../models/golf');
+
 /*
  * GET add product to cart
  */
@@ -767,6 +779,139 @@ router.get('/laptop/add/:product', function (req, res) {
 router.get('/wine/add/:product', function (req, res) {
     var slug = req.params.product;
             Wine.findOne({slug: slug}, function (err, p) {
+            if (err)
+                console.log(err);
+            if (typeof req.session.cart == "undefined") {
+                req.session.cart = [];
+                req.session.cart.push({
+                    title: slug,
+                    qty: 1,
+                    price:p.price,
+                    image: '/product_images/' + p._id + '/' + p.image
+                });
+            } else {
+                var cart = req.session.cart;
+                var newItem = true;
+    
+                for (var i = 0; i < cart.length; i++) {
+                    if (cart[i].title == slug) {
+                        cart[i].qty++;
+                        newItem = false;
+                        break;
+                    }
+                }
+    
+                if (newItem) {
+                    cart.push({
+                        title: slug,
+                        qty: 1,
+                        price:p.price,
+                        image: '/product_images/' + p._id + '/' + p.image
+                    });
+                }
+            }
+            req.flash('success', 'Product added to Cart successfully');
+            res.redirect('back');
+        });
+    
+    });
+
+       /* GET add  SHOOPING BAGS
+ 
+ product to cart
+ */
+router.get('/shoppingbags/add/:product', function (req, res) {
+    var slug = req.params.product;
+            Shoppingbags.findOne({slug: slug}, function (err, p) {
+            if (err)
+                console.log(err);
+            if (typeof req.session.cart == "undefined") {
+                req.session.cart = [];
+                req.session.cart.push({
+                    title: slug,
+                    qty: 1,
+                    price:p.price,
+                    image: '/product_images/' + p._id + '/' + p.image
+                });
+            } else {
+                var cart = req.session.cart;
+                var newItem = true;
+    
+                for (var i = 0; i < cart.length; i++) {
+                    if (cart[i].title == slug) {
+                        cart[i].qty++;
+                        newItem = false;
+                        break;
+                    }
+                }
+    
+                if (newItem) {
+                    cart.push({
+                        title: slug,
+                        qty: 1,
+                        price:p.price,
+                        image: '/product_images/' + p._id + '/' + p.image
+                    });
+                }
+            }
+            req.flash('success', 'Product added to Cart successfully');
+            res.redirect('back');
+        });
+    
+    });
+
+
+       /* GET add  PETS
+ 
+ product to cart
+ */
+router.get('/pets/add/:product', function (req, res) {
+    var slug = req.params.product;
+            Pets.findOne({slug: slug}, function (err, p) {
+            if (err)
+                console.log(err);
+            if (typeof req.session.cart == "undefined") {
+                req.session.cart = [];
+                req.session.cart.push({
+                    title: slug,
+                    qty: 1,
+                    price:p.price,
+                    image: '/product_images/' + p._id + '/' + p.image
+                });
+            } else {
+                var cart = req.session.cart;
+                var newItem = true;
+    
+                for (var i = 0; i < cart.length; i++) {
+                    if (cart[i].title == slug) {
+                        cart[i].qty++;
+                        newItem = false;
+                        break;
+                    }
+                }
+    
+                if (newItem) {
+                    cart.push({
+                        title: slug,
+                        qty: 1,
+                        price:p.price,
+                        image: '/product_images/' + p._id + '/' + p.image
+                    });
+                }
+            }
+            req.flash('success', 'Product added to Cart successfully');
+            res.redirect('back');
+        });
+    
+    });
+
+          /* GET add  PETS
+ 
+ product to cart
+ */
+router.get('/golf/add/:product', function (req, res) {
+    var slug = req.params.product;
+            Golf.findOne({slug: slug}, function (err, p) {
             if (err)
                 console.log(err);
             if (typeof req.session.cart == "undefined") {

@@ -170,6 +170,12 @@ const adminLaptops = require('./controller/admin_laptop');
 const Laptop =require('./controller/laptop');
 const Wine = require('./controller/wines');
 const adminWine = require('./controller/admin_wines');
+const adminShoppingbags = require('./controller/admin_shoppingbags');
+const Shoppingbags = require('./controller/shoppingbags');
+const adminPets = require('./controller/admin_pets');
+const Pets = require('./controller/pets');
+const adminGolf = require('./controller/admin_golf');
+const Golf = require('./controller/golf');
 
 
 app.use('/',pages);
@@ -214,6 +220,12 @@ app.use('/admin/laptop',adminLaptops);
 app.use('/laptop',Laptop);
 app.use('/admin/wine',adminWine);
 app.use('/wine',Wine);
+app.use('/admin/shoppingbags',adminShoppingbags);
+app.use('/shoppingbags',Shoppingbags)
+app.use('/admin/pets',adminPets);
+app.use('/pets',Pets);
+app.use('/admin/golf',adminGolf);
+app.use('/golf',Golf);
 
 
 
