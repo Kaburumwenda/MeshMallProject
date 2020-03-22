@@ -32,6 +32,38 @@ const Sport = require('../models/sport');
 //369
 const Women = require('../models/women');
 
+//GET MUSLIM FASHION ITEMS
+//425
+const Muslim = require('../models/muslim');
+
+//GET MEN FASHION ITEMS
+//476
+const Men = require('../models/men');
+
+//GET PHONE AND TABLETS PRODUCTS
+//524
+const Phone = require('../models/phone');
+
+//get entertainment INSTRUMENTS
+//570
+const Entertain = require('../models/entertain');
+
+//GET HOME ASSESTS
+//623
+const Home = require('../models/home');
+
+//get electrical products
+//671
+const Electrical = require('../models/electrical');
+
+//GET LAPTOPS & ACCESSORIES
+//721
+const Laptop = require('../models/laptop');
+
+//GET BEER, WINES & SPIRITS PRODUCTS
+//767
+const Wine = require('../models/wines');
+
 /*
  * GET add product to cart
  */
@@ -377,6 +409,364 @@ router.get('/sport/add/:product', function (req, res) {
 router.get('/women/add/:product', function (req, res) {
     var slug = req.params.product;
             Women.findOne({slug: slug}, function (err, p) {
+            if (err)
+                console.log(err);
+            if (typeof req.session.cart == "undefined") {
+                req.session.cart = [];
+                req.session.cart.push({
+                    title: slug,
+                    qty: 1,
+                    price:p.price,
+                    image: '/product_images/' + p._id + '/' + p.image
+                });
+            } else {
+                var cart = req.session.cart;
+                var newItem = true;
+    
+                for (var i = 0; i < cart.length; i++) {
+                    if (cart[i].title == slug) {
+                        cart[i].qty++;
+                        newItem = false;
+                        break;
+                    }
+                }
+    
+                if (newItem) {
+                    cart.push({
+                        title: slug,
+                        qty: 1,
+                        price:p.price,
+                        image: '/product_images/' + p._id + '/' + p.image
+                    });
+                }
+            }
+            req.flash('success', 'Product added to Cart successfully');
+            res.redirect('back');
+        });
+    
+    });
+
+       /*
+ * GET add  WOMEN AND FASHION 
+ 
+ product to cart
+ */
+router.get('/muslim/add/:product', function (req, res) {
+    var slug = req.params.product;
+            Muslim.findOne({slug: slug}, function (err, p) {
+            if (err)
+                console.log(err);
+            if (typeof req.session.cart == "undefined") {
+                req.session.cart = [];
+                req.session.cart.push({
+                    title: slug,
+                    qty: 1,
+                    price:p.price,
+                    image: '/product_images/' + p._id + '/' + p.image
+                });
+            } else {
+                var cart = req.session.cart;
+                var newItem = true;
+    
+                for (var i = 0; i < cart.length; i++) {
+                    if (cart[i].title == slug) {
+                        cart[i].qty++;
+                        newItem = false;
+                        break;
+                    }
+                }
+    
+                if (newItem) {
+                    cart.push({
+                        title: slug,
+                        qty: 1,
+                        price:p.price,
+                        image: '/product_images/' + p._id + '/' + p.image
+                    });
+                }
+            }
+            req.flash('success', 'Product added to Cart successfully');
+            res.redirect('back');
+        });
+    
+    });
+
+           /*
+ * GET add  MEN AND FASHION 
+ 
+ product to cart
+ */
+router.get('/men/add/:product', function (req, res) {
+    var slug = req.params.product;
+            Men.findOne({slug: slug}, function (err, p) {
+            if (err)
+                console.log(err);
+            if (typeof req.session.cart == "undefined") {
+                req.session.cart = [];
+                req.session.cart.push({
+                    title: slug,
+                    qty: 1,
+                    price:p.price,
+                    image: '/product_images/' + p._id + '/' + p.image
+                });
+            } else {
+                var cart = req.session.cart;
+                var newItem = true;
+    
+                for (var i = 0; i < cart.length; i++) {
+                    if (cart[i].title == slug) {
+                        cart[i].qty++;
+                        newItem = false;
+                        break;
+                    }
+                }
+    
+                if (newItem) {
+                    cart.push({
+                        title: slug,
+                        qty: 1,
+                        price:p.price,
+                        image: '/product_images/' + p._id + '/' + p.image
+                    });
+                }
+            }
+            req.flash('success', 'Product added to Cart successfully');
+            res.redirect('back');
+        });
+    
+    });
+
+               /*
+ * GET add  MEN AND FASHION 
+ 
+ product to cart
+ */
+router.get('/phone/add/:product', function (req, res) {
+    var slug = req.params.product;
+            Phone.findOne({slug: slug}, function (err, p) {
+            if (err)
+                console.log(err);
+            if (typeof req.session.cart == "undefined") {
+                req.session.cart = [];
+                req.session.cart.push({
+                    title: slug,
+                    qty: 1,
+                    price:p.price,
+                    image: '/product_images/' + p._id + '/' + p.image
+                });
+            } else {
+                var cart = req.session.cart;
+                var newItem = true;
+    
+                for (var i = 0; i < cart.length; i++) {
+                    if (cart[i].title == slug) {
+                        cart[i].qty++;
+                        newItem = false;
+                        break;
+                    }
+                }
+    
+                if (newItem) {
+                    cart.push({
+                        title: slug,
+                        qty: 1,
+                        price:p.price,
+                        image: '/product_images/' + p._id + '/' + p.image
+                    });
+                }
+            }
+            req.flash('success', 'Product added to Cart successfully');
+            res.redirect('back');
+        });
+    
+    });
+
+                   /*
+ * GET add  MEN AND FASHION 
+ 
+ product to cart
+ */
+router.get('/entertain/add/:product', function (req, res) {
+    var slug = req.params.product;
+            Entertain.findOne({slug: slug}, function (err, p) {
+            if (err)
+                console.log(err);
+            if (typeof req.session.cart == "undefined") {
+                req.session.cart = [];
+                req.session.cart.push({
+                    title: slug,
+                    qty: 1,
+                    price:p.price,
+                    image: '/product_images/' + p._id + '/' + p.image
+                });
+            } else {
+                var cart = req.session.cart;
+                var newItem = true;
+    
+                for (var i = 0; i < cart.length; i++) {
+                    if (cart[i].title == slug) {
+                        cart[i].qty++;
+                        newItem = false;
+                        break;
+                    }
+                }
+    
+                if (newItem) {
+                    cart.push({
+                        title: slug,
+                        qty: 1,
+                        price:p.price,
+                        image: '/product_images/' + p._id + '/' + p.image
+                    });
+                }
+            }
+            req.flash('success', 'Product added to Cart successfully');
+            res.redirect('back');
+        });
+    
+    });
+
+                       /*
+ * GET add  MEN AND FASHION 
+ 
+ product to cart
+ */
+router.get('/home/add/:product', function (req, res) {
+    var slug = req.params.product;
+            Home.findOne({slug: slug}, function (err, p) {
+            if (err)
+                console.log(err);
+            if (typeof req.session.cart == "undefined") {
+                req.session.cart = [];
+                req.session.cart.push({
+                    title: slug,
+                    qty: 1,
+                    price:p.price,
+                    image: '/product_images/' + p._id + '/' + p.image
+                });
+            } else {
+                var cart = req.session.cart;
+                var newItem = true;
+    
+                for (var i = 0; i < cart.length; i++) {
+                    if (cart[i].title == slug) {
+                        cart[i].qty++;
+                        newItem = false;
+                        break;
+                    }
+                }
+    
+                if (newItem) {
+                    cart.push({
+                        title: slug,
+                        qty: 1,
+                        price:p.price,
+                        image: '/product_images/' + p._id + '/' + p.image
+                    });
+                }
+            }
+            req.flash('success', 'Product added to Cart successfully');
+            res.redirect('back');
+        });
+    
+    });
+
+                          /*
+ * GET add  ELECTRICAL PRODUCTS
+ 
+ product to cart
+ */
+router.get('/electrical/add/:product', function (req, res) {
+    var slug = req.params.product;
+            Electrical.findOne({slug: slug}, function (err, p) {
+            if (err)
+                console.log(err);
+            if (typeof req.session.cart == "undefined") {
+                req.session.cart = [];
+                req.session.cart.push({
+                    title: slug,
+                    qty: 1,
+                    price:p.price,
+                    image: '/product_images/' + p._id + '/' + p.image
+                });
+            } else {
+                var cart = req.session.cart;
+                var newItem = true;
+    
+                for (var i = 0; i < cart.length; i++) {
+                    if (cart[i].title == slug) {
+                        cart[i].qty++;
+                        newItem = false;
+                        break;
+                    }
+                }
+    
+                if (newItem) {
+                    cart.push({
+                        title: slug,
+                        qty: 1,
+                        price:p.price,
+                        image: '/product_images/' + p._id + '/' + p.image
+                    });
+                }
+            }
+            req.flash('success', 'Product added to Cart successfully');
+            res.redirect('back');
+        });
+    
+    });
+
+    /* GET add  lAPTOPS  & ACCESSORIES
+ 
+ product to cart
+ */
+router.get('/laptop/add/:product', function (req, res) {
+    var slug = req.params.product;
+            Laptop.findOne({slug: slug}, function (err, p) {
+            if (err)
+                console.log(err);
+            if (typeof req.session.cart == "undefined") {
+                req.session.cart = [];
+                req.session.cart.push({
+                    title: slug,
+                    qty: 1,
+                    price:p.price,
+                    image: '/product_images/' + p._id + '/' + p.image
+                });
+            } else {
+                var cart = req.session.cart;
+                var newItem = true;
+    
+                for (var i = 0; i < cart.length; i++) {
+                    if (cart[i].title == slug) {
+                        cart[i].qty++;
+                        newItem = false;
+                        break;
+                    }
+                }
+    
+                if (newItem) {
+                    cart.push({
+                        title: slug,
+                        qty: 1,
+                        price:p.price,
+                        image: '/product_images/' + p._id + '/' + p.image
+                    });
+                }
+            }
+            req.flash('success', 'Product added to Cart successfully');
+            res.redirect('back');
+        });
+    
+    });
+
+    /* GET add  BEER, WINES & SPIRITS
+ 
+ product to cart
+ */
+router.get('/wine/add/:product', function (req, res) {
+    var slug = req.params.product;
+            Wine.findOne({slug: slug}, function (err, p) {
             if (err)
                 console.log(err);
             if (typeof req.session.cart == "undefined") {

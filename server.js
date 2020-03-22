@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
-const userCon = require('./routes/urs');
+const userCon = require('./controller/urs');
 var path = require('path');
 var bodyParser = require('body-parser');
 var session = require('express-session');
@@ -128,33 +128,48 @@ app.get('*', function(req,res,next) {
 });
 
 //ROUTES
-var pages = require('./routes/pages.js');
+var pages = require('./controller/pages.js');
 //var adminPages = require('./routes/admin_pages.js');
-var adminCategories = require('./routes/admin_categories.js');
-var adminProducts = require('./routes/admin_products.js');
-var Products = require('./routes/products.js');
-var cart = require('./routes/cart.js');
-var users = require('./routes/users.js');
-var Trending = require('./routes/admin_trending.js');
+var adminCategories = require('./controller/admin_categories.js');
+var adminProducts = require('./controller/admin_products.js');
+var Products = require('./controller/products.js');
+var cart = require('./controller/cart.js');
+var users = require('./controller/users.js');
+var Trending = require('./controller/admin_trending.js');
 //var Trendingadverts = require('./routes/trending.js');
-const adminValentine =require('./routes/admin_valentine');
-const Valentine = require('./routes/valentine');
-const adminGrocery = require('./routes/adnin_grocery');
-const Grocery = require('./routes/grocery');
-const Payment = require('./routes/payment');
-const Search = require('./routes/search');
-const adminAccounts = require('./routes/admin_accounts');
-const adminBabies = require('./routes/admin_baby');
-const Babyproduct =require('./routes/babyproducts')
-const adminBeauty = require('./routes/admin_beauty');
-const Beauty = require('./routes/beauty');
-const adminJewelleries = require('./routes/admin_jewelleries');
-const Jewellery = require('./routes/jewelleries');
-const adminSport = require('./routes/admin_sports');
-const Sports =require('./routes/sports');
-const adminWomen =require('./routes/admin_women');
-const Women = require('./routes/women');
-
+const adminValentine =require('./controller/admin_valentine');
+const Valentine = require('./controller/valentine');
+const adminGrocery = require('./controller/adnin_grocery');
+const Grocery = require('./controller/grocery');
+const Payment = require('./controller/payment');
+const Search = require('./controller/search');
+const adminAccounts = require('./controller/admin_accounts');
+const adminBabies = require('./controller/admin_baby');
+const Babyproduct =require('./controller/babyproducts')
+const adminBeauty = require('./controller/admin_beauty');
+const Beauty = require('./controller/beauty');
+const adminJewelleries = require('./controller/admin_jewelleries');
+const Jewellery = require('./controller/jewelleries');
+const adminSport = require('./controller/admin_sports');
+const Sports =require('./controller/sports');
+const adminWomen =require('./controller/admin_women');
+const Women = require('./controller/women');
+const adminMuslim = require('./controller/admin_muslim');
+const Muslim = require('./controller/muslim');
+const adminMen =require('./controller/admin_men');
+const Men = require('./controller/men');
+const adminPhones = require('./controller/admin_phones');
+const Phone = require('./controller/phones');
+const adminEntertain = require('./controller/admin_entertain');
+const Entertain = require('./controller/entertain');
+const adminHome = require('./controller/admin_home');
+const Home = require('./controller/home');
+const adminElectrical = require('./controller/admin_electrical');
+const Electrical = require('./controller/electrical');
+const adminLaptops = require('./controller/admin_laptop');
+const Laptop =require('./controller/laptop');
+const Wine = require('./controller/wines');
+const adminWine = require('./controller/admin_wines');
 
 
 app.use('/',pages);
@@ -183,6 +198,23 @@ app.use('/admin/sports',adminSport);
 app.use('/sports',Sports);
 app.use('/admin/women',adminWomen);
 app.use('/women',Women);
+app.use('/admin/muslim',adminMuslim);
+app.use('/muslim',Muslim);
+app.use('/admin/men',adminMen);
+app.use('/men',Men);
+app.use('/admin/phones',adminPhones);
+app.use('/phones',Phone);
+app.use('/admin/entertain',adminEntertain);
+app.use('/entertain',Entertain);
+app.use('/admin/home',adminHome);
+app.use('/home',Home);
+app.use('/admin/electrical',adminElectrical);
+app.use('/electrical',Electrical);
+app.use('/admin/laptop',adminLaptops);
+app.use('/laptop',Laptop);
+app.use('/admin/wine',adminWine);
+app.use('/wine',Wine);
+
 
 
 mongoose.connect(config.database,

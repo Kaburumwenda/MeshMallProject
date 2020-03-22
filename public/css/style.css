@@ -113,13 +113,18 @@ table.alignmiddle td {
 .img-container{
     display: flex;
     flex-direction: column;
-    width: 200px;
+    width: 180px;
     justify-content: center;
     align-items: center;
     background-color: #ffffff;
     
     
 }
+.img-container img{
+    width: 170px;
+    height: 150px;
+}
+
 
 
 /*
@@ -201,11 +206,31 @@ Home Page slider
       font-weight: bold;
       border-radius: 10px;
   }
-  @media (max-width: 760px){
+  @media (max-width: 700px){
       .slider2{
           display: none !important;
           
       }
+      .img-container{
+        
+        width: 140px;
+       }
+    .img-container img{
+        width: 120px !important;
+        height: 90px;
+       
+    }
+    .card{
+        
+        margin: 1px !important;
+    }
+    .card_size{
+       height: 230px;
+    }
+    .products.card{
+        height: 200px !important;
+    }
+    
       
       
   }
