@@ -176,6 +176,10 @@ const adminPets = require('./controller/admin_pets');
 const Pets = require('./controller/pets');
 const adminGolf = require('./controller/admin_golf');
 const Golf = require('./controller/golf');
+const adminBirthday = require('./controller/admin_birthday');
+const Birthday = require('./controller/birthday');
+const adminCamera = require('./controller/admin_camera');
+const Camera = require('./controller/camera');
 
 
 app.use('/',pages);
@@ -226,6 +230,10 @@ app.use('/admin/pets',adminPets);
 app.use('/pets',Pets);
 app.use('/admin/golf',adminGolf);
 app.use('/golf',Golf);
+app.use('/admin/birthday',adminBirthday);
+app.use('/birthday',Birthday);
+app.use('/admin/camera',adminCamera);
+app.use('/camera',Camera);
 
 
 
