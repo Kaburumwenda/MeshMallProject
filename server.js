@@ -180,6 +180,11 @@ const adminBirthday = require('./controller/admin_birthday');
 const Birthday = require('./controller/birthday');
 const adminCamera = require('./controller/admin_camera');
 const Camera = require('./controller/camera');
+const adminBookshop = require('./controller/admin_bookshop');
+const Bookshop = require('./controller/bookshop');
+const  adminFurniture = require('./controller/admin_furniture');
+const Furniture = require('./controller/furniture');
+
 
 
 app.use('/',pages);
@@ -234,6 +239,10 @@ app.use('/admin/birthday',adminBirthday);
 app.use('/birthday',Birthday);
 app.use('/admin/camera',adminCamera);
 app.use('/camera',Camera);
+app.use('/admin/bookshop',adminBookshop);
+app.use('/bookshop',Bookshop)
+app.use('/admin/furniture',adminFurniture);
+app.use('/furniture',Furniture);
 
 
 

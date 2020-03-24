@@ -1,10 +1,10 @@
 <%- include('../_layouts/adminheader') %>
 
-<h2 class="page-title btn btn-block btn-info text-center">Edit Camera & watches</h2> <br>
-<a href="/admin/camera" class="btn btn-primary">Back to all  Camera & watches </a>
+<h2 class="page-title btn btn-block btn-info text-center">Edit School & Bookshop</h2> <br>
+<a href="/admin/bookshop" class="btn btn-primary">Back to all  School & Bookshop </a>
 <br><br>
 
-<form method="post" action="/admin/camera/edit-camera/<%= id %>" enctype="multipart/form-data">
+<form method="post" action="/admin/bookshop/edit-bookshop/<%= id %>" enctype="multipart/form-data">
     
     <div class="form-group">
         <label for="">Title</label>
@@ -82,14 +82,14 @@
     <% if (image != "thumbs") { %>
     <li>
         <img src="/product_images/<%= id %>/gallery/thumbs/<%= image %>" alt="">&nbsp;
-        <a class="confirmDeletion" href="/admin/camera/delete-image/<%= image %>?id=<%= id %>">delete</a>
+        <a class="confirmDeletion" href="/admin/bookshop/delete-image/<%= image %>?id=<%= id %>">delete</a>
     </li>
     <% } %>
     <% }); %>
 </ul>
 
 <br><br>
-<form action="/admin/camera/product-gallery/<%= id %>" method="post" enctype="multipart/form-data" class="dropzone" id="dropzoneForm">
+<form action="/admin/bookshop/product-gallery/<%= id %>" method="post" enctype="multipart/form-data" class="dropzone" id="dropzoneForm">
     <div class="fallback">
         <input type="file" name="file" multiple>
         <input type="submit" value="Upload">

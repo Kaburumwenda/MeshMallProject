@@ -84,6 +84,14 @@ const Birthday = require('../models/birthday');
 //1008
 const Camera = require('../models/camera');
 
+//GET Bookshop
+//1056
+const Bookshop = require('../models/bookshop');
+
+//GET Furniture
+//1056
+const Furniture = require('../models/furniture');
+
 /*
  * GET add product to cart
  */
@@ -1008,6 +1016,94 @@ router.get('/birthday/add/:product', function (req, res) {
 router.get('/camera/add/:product', function (req, res) {
     var slug = req.params.product;
             Camera.findOne({slug: slug}, function (err, p) {
+            if (err)
+                console.log(err);
+            if (typeof req.session.cart == "undefined") {
+                req.session.cart = [];
+                req.session.cart.push({
+                    title: slug,
+                    qty: 1,
+                    price:p.price,
+                    image: '/product_images/' + p._id + '/' + p.image
+                });
+            } else {
+                var cart = req.session.cart;
+                var newItem = true;
+    
+                for (var i = 0; i < cart.length; i++) {
+                    if (cart[i].title == slug) {
+                        cart[i].qty++;
+                        newItem = false;
+                        break;
+                    }
+                }
+    
+                if (newItem) {
+                    cart.push({
+                        title: slug,
+                        qty: 1,
+                        price:p.price,
+                        image: '/product_images/' + p._id + '/' + p.image
+                    });
+                }
+            }
+            req.flash('success', 'Product added to Cart successfully');
+            res.redirect('back');
+        });
+    
+    });
+
+                      /* GET add  PETS
+ 
+ product to cart
+ */
+router.get('/bookshop/add/:product', function (req, res) {
+    var slug = req.params.product;
+            Bookshop.findOne({slug: slug}, function (err, p) {
+            if (err)
+                console.log(err);
+            if (typeof req.session.cart == "undefined") {
+                req.session.cart = [];
+                req.session.cart.push({
+                    title: slug,
+                    qty: 1,
+                    price:p.price,
+                    image: '/product_images/' + p._id + '/' + p.image
+                });
+            } else {
+                var cart = req.session.cart;
+                var newItem = true;
+    
+                for (var i = 0; i < cart.length; i++) {
+                    if (cart[i].title == slug) {
+                        cart[i].qty++;
+                        newItem = false;
+                        break;
+                    }
+                }
+    
+                if (newItem) {
+                    cart.push({
+                        title: slug,
+                        qty: 1,
+                        price:p.price,
+                        image: '/product_images/' + p._id + '/' + p.image
+                    });
+                }
+            }
+            req.flash('success', 'Product added to Cart successfully');
+            res.redirect('back');
+        });
+    
+    });
+
+                          /* GET add  PETS
+ 
+ product to cart
+ */
+router.get('/furniture/add/:product', function (req, res) {
+    var slug = req.params.product;
+            Furniture.findOne({slug: slug}, function (err, p) {
             if (err)
                 console.log(err);
             if (typeof req.session.cart == "undefined") {
