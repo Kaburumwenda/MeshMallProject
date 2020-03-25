@@ -122,6 +122,7 @@ app.use(passport.session());
 
 app.get('*', function(req,res,next) {
    res.locals.cart = req.session.cart;
+   res.locals.fav = req.session.fav;
    res.locals.user = req.user || null;
    
    next();
@@ -134,6 +135,7 @@ var adminCategories = require('./controller/admin_categories.js');
 var adminProducts = require('./controller/admin_products.js');
 var Products = require('./controller/products.js');
 var cart = require('./controller/cart.js');
+const Fav = require('./controller/favourite');
 var users = require('./controller/users.js');
 var Trending = require('./controller/admin_trending.js');
 //var Trendingadverts = require('./routes/trending.js');
@@ -199,6 +201,7 @@ app.use('/admin/categories',adminCategories);
 app.use('/admin/products',adminProducts);
 app.use('/products',Products);
 app.use('/cart',cart);
+app.use('/fav',Fav);
 app.use('/users',users);
 app.use('/admin/trending',Trending);
 //app.use('/adverts',Trendingadverts);

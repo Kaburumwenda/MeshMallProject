@@ -194,6 +194,15 @@ MOBILE
     margin-right: 20px;
     margin-left: 20px;
 }
+.mobile_acc a:hover{
+    color: orangered;
+}
+.mobile-cart a:hover{
+    color: orangered;
+}
+.mobile-fav a:hover{
+    color: orangered;
+}
 .mobile-reg{
     background-color: white;
     margin-top: 50px !important;
@@ -219,6 +228,9 @@ MOBILE
 .mobile-brand{
     font-family: 'Bungee Inline', cursive;
     font-size: 18px;
+}
+.mobile-brand a:hover{
+    color: orangered;
 }
 
 /*SEARCH BAR
