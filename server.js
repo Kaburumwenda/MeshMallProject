@@ -184,6 +184,12 @@ const adminBookshop = require('./controller/admin_bookshop');
 const Bookshop = require('./controller/bookshop');
 const  adminFurniture = require('./controller/admin_furniture');
 const Furniture = require('./controller/furniture');
+const adminBear = require('./controller/admin_bear');
+const Bear = require('./controller/bear');
+const adminOffice = require('./controller/admin_office');
+const Office = require('./controller/office');
+const adminSanitary = require('./controller/admin_sanitary');
+const Sanitary = require('./controller/sanitary');
 
 
 
@@ -243,6 +249,13 @@ app.use('/admin/bookshop',adminBookshop);
 app.use('/bookshop',Bookshop)
 app.use('/admin/furniture',adminFurniture);
 app.use('/furniture',Furniture);
+app.use('/admin/bear',adminBear);
+app.use('/bear',Bear);
+app.use('/admin/office',adminOffice);
+app.use('/office',Office);
+app.use('/admin/sanitary',adminSanitary);
+app.use('/sanitary',Sanitary);
+///app.use('/sanitary',Sanitary);
 
 
 

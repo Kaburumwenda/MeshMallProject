@@ -1,0 +1,55 @@
+<% include _layouts/header %>
+
+<div class="row" id="products">
+    
+    <h2 class="page-header text-capitalize"><%= p.title %></h2>
+    
+    <div class="col-xs-12 col-md-5">
+        <img class="spi" src="/product_images/<%= p.id %>/<%= p.image %>" alt="">
+        <br>
+       
+        </span>
+    </div>
+    <div class="col-xs-12 col-md-7">
+        <p class="product_desc text-capitalize"><%= p.desc %></p>
+        
+        <h4 style="font-family: 'Roboto Slab';">Ksh <%= p.price %></h4>
+        <h5 style="font-family: 'Roboto Slab';"><strike class="strike">Ksh <%= p.price_off %></Ksh></strike></h5>
+        <p class="discoun" style="font-weight: bold; font-family: 'Oswald'; color:'orange'">Save Ksh: <%= p.discount %></p>
+        <p class="sold_products">Sold By: <span><%= p.seller %></span></p>
+        
+        <% if (loggedIn) { %>
+        <p><a href="/cart/sanitary/add/<%= p.slug %>"><button class="btn btn-block btn-success"> <i class="fa fa-cart-plus" aria-hidden="true"></i>
+            Add to Cart</button></a>
+            <p>
+               <a href="#">  <span><i class="fa fa-star" aria-hidden="true"></i></span> Enjoy Unlimited Free Delivery with MeshMall</a>
+            </p>
+        </p>
+        <% } else {%>
+        <p style="color:red;margin-left:20px; font-weight: bold;">You must be logged in to purchase items.</p>
+        <% } %>
+        <a href="/sanitary" class="btn btn-danger btn-block">Continue Shopping</a>
+    </div>
+   
+    <div class="col-xs-12">
+        <ul class="gallery">
+            <% galleryImages.forEach(function(image){ %>
+            <% if (image != "thumbs") { %>
+            <li>
+                <a data-fancybox="gallery" href="/product_images/<%= p.id %>/gallery/<%= image %>">
+                    <img src="/product_images/<%= p.id %>/gallery/thumbs/<%= image %>" alt="">
+                </a>
+            </li>
+            <% } %>
+            <% }); %>
+        </ul>
+    </div>
+    <br>
+    <div class="col-10 co-xs-10">
+        <p class="product_spec"><u>Product Specifications</u></p>
+        
+        <p><%= p.spec %></p>
+    </div>
+</div>
+
+<% include _layouts/footer %>

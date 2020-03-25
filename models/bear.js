@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 // Product Schema
-var BeautySchema = mongoose.Schema({
+var BearSchema = mongoose.Schema({
    
     title: {
         type: String,
@@ -43,4 +43,4 @@ var BeautySchema = mongoose.Schema({
     
 });
 
-var Beauty = module.exports = mongoose.model('Beauty_makeups', BeautySchema);
+var Bear = module.exports = mongoose.model('Bear_wines', BearSchema);

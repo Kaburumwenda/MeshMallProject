@@ -92,6 +92,17 @@ const Bookshop = require('../models/bookshop');
 //1056
 const Furniture = require('../models/furniture');
 
+//GET Furniture
+//1155
+const Bear = require('../models/bear');
+
+//GET OFFICE
+//1196
+const Office = require('../models/office');
+
+//GET OFFICE
+//1196
+const Sanitary = require('../models/sanitary');
 /*
  * GET add product to cart
  */
@@ -1104,6 +1115,139 @@ router.get('/bookshop/add/:product', function (req, res) {
 router.get('/furniture/add/:product', function (req, res) {
     var slug = req.params.product;
             Furniture.findOne({slug: slug}, function (err, p) {
+            if (err)
+                console.log(err);
+            if (typeof req.session.cart == "undefined") {
+                req.session.cart = [];
+                req.session.cart.push({
+                    title: slug,
+                    qty: 1,
+                    price:p.price,
+                    image: '/product_images/' + p._id + '/' + p.image
+                });
+            } else {
+                var cart = req.session.cart;
+                var newItem = true;
+    
+                for (var i = 0; i < cart.length; i++) {
+                    if (cart[i].title == slug) {
+                        cart[i].qty++;
+                        newItem = false;
+                        break;
+                    }
+                }
+    
+                if (newItem) {
+                    cart.push({
+                        title: slug,
+                        qty: 1,
+                        price:p.price,
+                        image: '/product_images/' + p._id + '/' + p.image
+                    });
+                }
+            }
+            req.flash('success', 'Product added to Cart successfully');
+            res.redirect('back');
+        });
+    
+    });
+
+                             /* GET add  WINES SPIRIT AND BEAR
+ 
+ product to cart
+ */
+router.get('/bear/add/:product', function (req, res) {
+    var slug = req.params.product;
+            Bear.findOne({slug: slug}, function (err, p) {
+            if (err)
+                console.log(err);
+            if (typeof req.session.cart == "undefined") {
+                req.session.cart = [];
+                req.session.cart.push({
+                    title: slug,
+                    qty: 1,
+                    price:p.price,
+                    image: '/product_images/' + p._id + '/' + p.image
+                });
+            } else {
+                var cart = req.session.cart;
+                var newItem = true;
+    
+                for (var i = 0; i < cart.length; i++) {
+                    if (cart[i].title == slug) {
+                        cart[i].qty++;
+                        newItem = false;
+                        break;
+                    }
+                }
+    
+                if (newItem) {
+                    cart.push({
+                        title: slug,
+                        qty: 1,
+                        price:p.price,
+                        image: '/product_images/' + p._id + '/' + p.image
+                    });
+                }
+            }
+            req.flash('success', 'Product added to Cart successfully');
+            res.redirect('back');
+        });
+    
+    });
+
+
+                          /* GET add  OFFICE
+ 
+ product to cart
+ */
+router.get('/office/add/:product', function (req, res) {
+    var slug = req.params.product;
+            Office.findOne({slug: slug}, function (err, p) {
+            if (err)
+                console.log(err);
+            if (typeof req.session.cart == "undefined") {
+                req.session.cart = [];
+                req.session.cart.push({
+                    title: slug,
+                    qty: 1,
+                    price:p.price,
+                    image: '/product_images/' + p._id + '/' + p.image
+                });
+            } else {
+                var cart = req.session.cart;
+                var newItem = true;
+    
+                for (var i = 0; i < cart.length; i++) {
+                    if (cart[i].title == slug) {
+                        cart[i].qty++;
+                        newItem = false;
+                        break;
+                    }
+                }
+    
+                if (newItem) {
+                    cart.push({
+                        title: slug,
+                        qty: 1,
+                        price:p.price,
+                        image: '/product_images/' + p._id + '/' + p.image
+                    });
+                }
+            }
+            req.flash('success', 'Product added to Cart successfully');
+            res.redirect('back');
+        });
+    
+    });
+
+                              /* GET add  OFFICE
+ 
+ product to cart
+ */
+router.get('/sanitary/add/:product', function (req, res) {
+    var slug = req.params.product;
+            Sanitary.findOne({slug: slug}, function (err, p) {
             if (err)
                 console.log(err);
             if (typeof req.session.cart == "undefined") {

@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 // Product Schema
-var BeautySchema = mongoose.Schema({
+var SanitarySchema = mongoose.Schema({
    
     title: {
         type: String,
@@ -43,4 +43,4 @@ var BeautySchema = mongoose.Schema({
     
 });
 
-var Beauty = module.exports = mongoose.model('Beauty_makeups', BeautySchema);
+var Sanitary = module.exports = mongoose.model('Sanitary', SanitarySchema);
