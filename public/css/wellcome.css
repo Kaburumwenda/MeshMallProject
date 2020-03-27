@@ -1,0 +1,17 @@
+.welcome_user{
+    color: orchid;
+    background-image:url('/images/we1.gif');
+    background-size: cover;
+
+}
+.welcome_order{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+.welcome_order a{
+    text-decoration: none;
+    font-family: 'Bungee Inline', cursive;
+    color: green;
+}

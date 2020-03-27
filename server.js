@@ -9,7 +9,7 @@ var expressValidator = require('express-validator');
 var fileUpload = require('express-fileupload');
 var passport = require('passport');
 const config = require('./config/database');
-const cool = require('cool-ascii-faces')
+const cool = require('cool-ascii-faces');
 const MongoStore = require('connect-mongo')(session);
 
 
@@ -192,6 +192,7 @@ const adminOffice = require('./controller/admin_office');
 const Office = require('./controller/office');
 const adminSanitary = require('./controller/admin_sanitary');
 const Sanitary = require('./controller/sanitary');
+const Wellcome = require('./controller/wellcome');
 
 
 
@@ -258,9 +259,13 @@ app.use('/admin/office',adminOffice);
 app.use('/office',Office);
 app.use('/admin/sanitary',adminSanitary);
 app.use('/sanitary',Sanitary);
-///app.use('/sanitary',Sanitary);
+app.use('/wellcome',Wellcome);
 
+//POS
+//POS
+const cartItems = require('./pos/cartitems');
 
+app.use('/cartitems',cartItems);
 
 mongoose.connect(config.database,
 { useNewUrlParser: true,  useUnifiedTopology: true  },

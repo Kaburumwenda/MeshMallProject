@@ -153,7 +153,7 @@ router.post('/add-valentine', function (req, res) {
                     }
 
                     req.flash('success', 'Product added successfully');
-                    res.redirect('/admin/products');
+                    res.redirect('/admin/valentine');
                 });
             }
         });
@@ -290,7 +290,7 @@ router.post('/edit-valentine/:id', function (req, res) {
                         }
 
                         req.flash('success', 'Product edited!');
-                        res.redirect('/admin/products/edit-product/' + id);
+                        res.redirect('/admin/valentine/edit-valentine/' + id);
                     });
 
                 });
@@ -340,7 +340,7 @@ router.get('/delete-image/:image',isAdmin,  function (req, res) {
                     console.log(err);
                 } else {
                     req.flash('success', 'Image deleted!');
-                    res.redirect('/admin/products/edit-product/' + req.query.id);
+                    res.redirect('/admin/valentine/edit-valentine/' + req.query.id);
                 }
             });
         }
@@ -364,7 +364,7 @@ router.get('/delete-valentine/:id', isAdmin, function (req, res) {
             });
             
             req.flash('success', 'Product deleted!');
-            res.redirect('/admin/products');
+            res.redirect('/admin/valentine');
         }
     });
 

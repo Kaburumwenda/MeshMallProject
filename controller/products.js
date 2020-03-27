@@ -18,6 +18,7 @@ router.get('/all-products', function(req, res) {
 //router.get('/', isUser, function (req, res) {
     
  Product.find(function (err, products) {
+     
      if (err)
          console.log(err); 
      res.render('all_products', {

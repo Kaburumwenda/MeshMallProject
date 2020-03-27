@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 // Product Schema
-var ProductSchema = mongoose.Schema({
+var CartSchema = mongoose.Schema({
    
     title: {
         type: String,
@@ -12,18 +12,16 @@ var ProductSchema = mongoose.Schema({
         type: Number,
         required: true
     },
+    
     qty:{
-        type:String,
+        type:Number,
         required:true
     },
     image: {
         type: String
     },
-    phone: {
-        type: Number,
-        required: true
-    }
+    
     
 })
 
-var Product = module.exports = mongoose.model('Cart', ProductSchema);
+var Cart = module.exports = mongoose.model('Cart_items', CartSchema);
